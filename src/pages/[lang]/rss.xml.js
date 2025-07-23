@@ -23,7 +23,7 @@ export async function GET(context) {
 
 	return rss({
 		title: localeTitle,
-		description: localeDescription,
+		description: localeDescription || "Colegio Teresiano Guacara - Formando líderes con valores",
 		site: context.site,
 		items: posts.map((post) => ({
 			title: post.data.title,
