@@ -56,8 +56,8 @@ export const getStaticPaths = () =>
         <p class="hero-tagline">
           {t({ 
             es: "# Una Vez Teresiano, Teresiano serás por siempre.",
-            en: "# Once Teresian, Teresian you will be forever.",
-            pt: "# Uma Vez Teresiano, Teresiano serás para sempre."
+            en: "# Once a Teresian, always a Teresian.",
+            pt: "# Uma vez Teresiano, Teresiano serás para sempre."
           })}
         </p>
       </div>
@@ -91,9 +91,11 @@ export const getStaticPaths = () =>
   <section class="about-section">
     <div class="about-container">
       <p class="about-text">
-        Somos parte de la red de Colegio Teresianos, que cuenta con más de 80 escuelas alrededor del mundo, 
-        con más de 140 años de experiencia a nivel global, llevamos 55 años en Guacara formando líderes con valores, Fe y 
-        compromiso social.
+        {t({ 
+          es: "Somos parte de la red de Colegio Teresianos, que cuenta con más de 80 escuelas alrededor del mundo, con más de 140 años de experiencia a nivel global, llevamos 55 años en Guacara formando líderes con valores, Fe y compromiso social.",
+          en: "We are part of the Teresian School network, which has more than 80 schools around the world, with more than 140 years of global experience, we have been in Guacara for 55 years forming leaders with values, Faith and social commitment.",
+          pt: "Somos parte da rede de Colégios Teresianos, que conta com mais de 80 escolas ao redor do mundo, com mais de 140 anos de experiência global, estamos em Guacara há 55 anos formando líderes com valores, Fé e compromisso social."
+        })}
       </p>
     </div>
   </section>
@@ -106,8 +108,12 @@ export const getStaticPaths = () =>
           <Image src={prescolarImg} alt="Preescolar" loading="lazy" />
         </div>
         <div class="level-overlay">
-          <h3 class="level-title">PREESCOLAR</h3>
-          <p class="level-subtitle">MÁS INFORMACIÓN ></p>
+          <h3 class="level-title">
+            {t({ es: "PREESCOLAR", en: "PRESCHOOL", pt: "PRÉ-ESCOLAR" })}
+          </h3>
+          <p class="level-subtitle">
+            {t({ es: "MÁS INFORMACIÓN >", en: "MORE INFO >", pt: "MAIS INFORMAÇÃO >" })}
+          </p>
         </div>
       </div>
       
@@ -116,8 +122,12 @@ export const getStaticPaths = () =>
           <Image src={primariaImg} alt="Primaria" loading="lazy" />
         </div>
         <div class="level-overlay">
-          <h3 class="level-title">PRIMARIA</h3>
-          <p class="level-subtitle">MÁS INFORMACIÓN ></p>
+          <h3 class="level-title">
+            {t({ es: "PRIMARIA", en: "PRIMARY", pt: "PRIMÁRIA" })}
+          </h3>
+          <p class="level-subtitle">
+            {t({ es: "MÁS INFORMACIÓN >", en: "MORE INFO >", pt: "MAIS INFORMAÇÃO >" })}
+          </p>
         </div>
       </div>
       
@@ -126,8 +136,12 @@ export const getStaticPaths = () =>
           <Image src={secundariaImg} alt="Secundaria" loading="lazy" />
         </div>
         <div class="level-overlay">
-          <h3 class="level-title">SECUNDARIA</h3>
-          <p class="level-subtitle">MÁS INFORMACIÓN ></p>
+          <h3 class="level-title">
+            {t({ es: "SECUNDARIA", en: "SECONDARY", pt: "SECUNDÁRIA" })}
+          </h3>
+          <p class="level-subtitle">
+            {t({ es: "MÁS INFORMACIÓN >", en: "MORE INFO >", pt: "MAIS INFORMAÇÃO >" })}
+          </p>
         </div>
       </div>
       
@@ -136,8 +150,12 @@ export const getStaticPaths = () =>
           <Image src={diversificadoImg} alt="Diversificado" loading="lazy" />
         </div>
         <div class="level-overlay">
-          <h3 class="level-title">DIVERSIFICADO</h3>
-          <p class="level-subtitle">MÁS INFORMACIÓN ></p>
+          <h3 class="level-title">
+            {t({ es: "DIVERSIFICADO", en: "DIVERSIFIED", pt: "DIVERSIFICADO" })}
+          </h3>
+          <p class="level-subtitle">
+            {t({ es: "MÁS INFORMACIÓN >", en: "MORE INFO >", pt: "MAIS INFORMAÇÃO >" })}
+          </p>
         </div>
       </div>
     </div>
@@ -146,7 +164,9 @@ export const getStaticPaths = () =>
   <!-- Educational Proposal Section -->
   <section class="educational-proposal">
     <div class="proposal-container">
-      <h2 class="proposal-title">PROPUESTA EDUCATIVA</h2>
+      <h2 class="proposal-title">
+        {t({ es: "PROPUESTA EDUCATIVA", en: "EDUCATIONAL PROPOSAL", pt: "PROPOSTA EDUCATIVA" })}
+      </h2>
       
       <div class="proposal-grid">
         <div class="proposal-card">
@@ -154,9 +174,15 @@ export const getStaticPaths = () =>
             <Image src={propuestaEducativaImg} alt="Encuentro" loading="lazy" />
           </div>
           <div class="proposal-content">
-            <h3 class="proposal-card-title">ENCUENTRO</h3>
+            <h3 class="proposal-card-title">
+              {t({ es: "ENCUENTRO", en: "ENCOUNTER", pt: "ENCONTRO" })}
+            </h3>
             <p class="proposal-description">
-              Se promueve el encuentro con Cristo, con los otros y consigo mismo, a través de la vivencia, la tolerancia, la empatía, la verdad, la justicia, la solidaridad y la gratuidad de alma.
+              {t({ 
+                es: "Espacio de crecimiento personal y espiritual donde los estudiantes desarrollan su identidad y valores.",
+                en: "Space for personal and spiritual growth where students develop their identity and values.",
+                pt: "Espaço de crescimento pessoal e espiritual onde os estudantes desenvolvem sua identidade e valores."
+              })}
             </p>
           </div>
         </div>
@@ -166,9 +192,15 @@ export const getStaticPaths = () =>
             <Image src={propuestaTrofeosImg} alt="Responsabilidad Social" loading="lazy" />
           </div>
           <div class="proposal-content">
-            <h3 class="proposal-card-title">RESPONSABILIDAD SOCIAL</h3>
+            <h3 class="proposal-card-title">
+              {t({ es: "RESPONSABILIDAD SOCIAL", en: "SOCIAL RESPONSIBILITY", pt: "RESPONSABILIDADE SOCIAL" })}
+            </h3>
             <p class="proposal-description">
-              Cuidado del medio ambiente y la participación en la misión evangelizadora de la Iglesia.
+              {t({ 
+                es: "Cuidado del medio ambiente y la participación en la misión evangelizadora de la Iglesia.",
+                en: "Environmental care and participation in the evangelizing mission of the Church.",
+                pt: "Cuidado do meio ambiente e participação na missão evangelizadora da Igreja."
+              })}
             </p>
           </div>
         </div>
@@ -178,16 +210,24 @@ export const getStaticPaths = () =>
             <Image src={propuestaComunidadImg} alt="Comunidades que Aprenden" loading="lazy" />
           </div>
           <div class="proposal-content">
-            <h3 class="proposal-card-title">COMUNIDADES QUE APRENDEN</h3>
+            <h3 class="proposal-card-title">
+              {t({ es: "COMUNIDADES QUE APRENDEN", en: "LEARNING COMMUNITIES", pt: "COMUNIDADES QUE APRENDEM" })}
+            </h3>
             <p class="proposal-description">
-              Estudiantes, docentes, directivos, estudiantes, profesores y familias aprenden juntos, fomentando la colaboración y el sentido de pertenencia.
+              {t({ 
+                es: "Estudiantes, docentes, directivos y familias aprenden juntos, fomentando la colaboración y el sentido de pertenencia.",
+                en: "Students, teachers, administrators and families learn together, fostering collaboration and sense of belonging.",
+                pt: "Estudantes, professores, diretores e famílias aprendem juntos, promovendo a colaboração e o sentido de pertencimento."
+              })}
             </p>
           </div>
         </div>
       </div>
       
       <div class="proposal-button-container">
-        <button class="proposal-button">VER MÁS</button>
+        <button class="proposal-button">
+          {t({ es: "VER MÁS", en: "SEE MORE", pt: "VER MAIS" })}
+        </button>
       </div>
     </div>
   </section>
@@ -197,18 +237,42 @@ export const getStaticPaths = () =>
     <div class="stats-container">
       <div class="stat-item">
         <div class="stat-number">+1,500</div>
-        <div class="stat-label">ALUMNOS</div>
-        <div class="stat-description">Más de 1500 estudiantes</div>
+        <div class="stat-label">
+          {t({ es: "ALUMNOS", en: "STUDENTS", pt: "ALUNOS" })}
+        </div>
+        <div class="stat-description">
+          {t({ 
+            es: "Más de 1500 estudiantes",
+            en: "More than 1500 students",
+            pt: "Mais de 1500 estudantes"
+          })}
+        </div>
       </div>
       <div class="stat-item">
         <div class="stat-number">06</div>
-        <div class="stat-label">CAMPUS</div>
-        <div class="stat-description">Con 6 campus para el desarrollo integral</div>
+        <div class="stat-label">
+          {t({ es: "CAMPUS", en: "CAMPUS", pt: "CAMPUS" })}
+        </div>
+        <div class="stat-description">
+          {t({ 
+            es: "Con 6 campus para el desarrollo integral",
+            en: "With 6 campuses for integral development",
+            pt: "Com 6 campus para o desenvolvimento integral"
+          })}
+        </div>
       </div>
       <div class="stat-item">
         <div class="stat-number">+3,500</div>
-        <div class="stat-label">EGRESADOS</div>
-        <div class="stat-description">Representando la calidad que nos caracteriza</div>
+        <div class="stat-label">
+          {t({ es: "EGRESADOS", en: "GRADUATES", pt: "FORMADOS" })}
+        </div>
+        <div class="stat-description">
+          {t({ 
+            es: "Representando la calidad que nos caracteriza",
+            en: "Representing the quality that characterizes us",
+            pt: "Representando a qualidade que nos caracteriza"
+          })}
+        </div>
       </div>
     </div>
   </section>
@@ -217,7 +281,11 @@ export const getStaticPaths = () =>
   <section class="inspirational-section">
     <div class="inspirational-container">
       <h2 class="inspirational-message">
-        Educamos educándonos desde la realidad y para la vida, como sujetos de encuentro y transformadores sociales.
+        {t({ 
+          es: "Educamos educándonos desde la realidad y para la vida, como sujetos de encuentro y transformadores sociales.",
+          en: "We educate by educating ourselves from reality and for life, as subjects of encounter and social transformers.",
+          pt: "Educamos educando-nos desde a realidade e para a vida, como sujeitos de encontro e transformadores sociais."
+        })}
       </h2>
     </div>
   </section>
@@ -229,10 +297,22 @@ export const getStaticPaths = () =>
         <Image src={logoFinal} alt="Colegio Teresiano Logo" loading="lazy" />
       </div>
       <div class="contact-info">
-        <h3 class="contact-title">CONTACTO</h3>
-        <p class="contact-phone">📞 Teléfono: +58 245 871 2717</p>
-        <p class="contact-email">✉️ Email: info@teresiano.edu.ve</p>
-        <p class="contact-address">Dirección: Avenida Bolívar Oeste, Calle 14, Urbanización El Calvario, Guacara, Venezuela</p>
+        <h3 class="contact-title">
+          {t({ es: "CONTACTO", en: "CONTACT", pt: "CONTATO" })}
+        </h3>
+        <p class="contact-phone">
+          📞 {t({ es: "Teléfono", en: "Phone", pt: "Telefone" })}: +58 245 871 2717
+        </p>
+        <p class="contact-email">
+          ✉️ Email: info@teresiano.edu.ve
+        </p>
+        <p class="contact-address">
+          {t({ 
+            es: "Dirección: Avenida Bolívar Oeste, Calle 14, Urbanización El Calvario, Guacara, Venezuela",
+            en: "Address: Avenida Bolívar Oeste, Calle 14, Urbanización El Calvario, Guacara, Venezuela",
+            pt: "Endereço: Avenida Bolívar Oeste, Calle 14, Urbanización El Calvario, Guacara, Venezuela"
+          })}
+        </p>
         <div class="social-links">
           <a href="#" class="social-link">📘</a>
           <a href="#" class="social-link">📷</a>
@@ -243,8 +323,20 @@ export const getStaticPaths = () =>
     </div>
     <div class="footer-info">
       <p>RIF: J-00139-8</p>
-      <p>© COLEGIO TERESIANO - GUACARA GUACARA - TODOS LOS DERECHOS RESERVADOS</p>
-      <p>POLÍTICA DE PRIVACIDAD</p>
+      <p>
+        © COLEGIO TERESIANO - GUACARA - {t({ 
+          es: "TODOS LOS DERECHOS RESERVADOS",
+          en: "ALL RIGHTS RESERVED",
+          pt: "TODOS OS DIREITOS RESERVADOS"
+        })}
+      </p>
+      <p>
+        {t({ 
+          es: "POLÍTICA DE PRIVACIDAD",
+          en: "PRIVACY POLICY",
+          pt: "POLÍTICA DE PRIVACIDADE"
+        })}
+      </p>
     </div>
   </section>
 </Layout>
@@ -738,14 +830,16 @@ export const getStaticPaths = () =>
 
   /* Educational Proposal Section */
   .educational-proposal {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 
   .proposal-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
   }
 
   .proposal-title {
@@ -914,17 +1008,19 @@ export const getStaticPaths = () =>
 
   /* Statistics Section */
   .statistics-section {
-    padding: 3rem 0;
+    padding: 5rem 0;
     background: var(--color-base);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 
   .stats-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    gap: 4rem;
   }
 
   .stat-item {
@@ -957,15 +1053,17 @@ export const getStaticPaths = () =>
 
   /* Inspirational Message Section */
   .inspirational-section {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background: #4a6cf7;
     color: white;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 
   .inspirational-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
     text-align: center;
   }
 
@@ -979,22 +1077,25 @@ export const getStaticPaths = () =>
 
   /* Contact Section */
   .contact-section {
-    padding: 4rem 0 2rem;
+    padding: 6rem 0 3rem;
     background: var(--color-base);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
   }
 
   .contact-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 3rem;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
     border: 2px solid #e9ecef;
-    border-radius: 16px;
-    padding: 3rem;
-    margin-bottom: 2rem;
+    border-radius: 20px;
+    padding: 4rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   }
 
   .contact-logo img {
