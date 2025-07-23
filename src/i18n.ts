@@ -80,3 +80,10 @@ type LocalePath = {
 export const localeParams = Object.keys(LOCALES).map((lang) => ({
   params: { lang },
 }));
+
+/**
+ * Reusable getStaticPaths for dynamic [lang] pages.
+ */
+export function getStaticPaths() {
+  return localeParams;
+}

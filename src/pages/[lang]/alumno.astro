@@ -1,0 +1,15 @@
+---
+import Layout from "@/layouts/Base.astro";
+import { localeParams } from "@/i18n";
+export function getStaticPaths() { return localeParams; }
+import { useTranslations, type Lang } from "@/i18n";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const title = t({ es: "Alumno", en: "Student", pt: "Aluno" });
+---
+
+<Layout {title}>
+  <h1>{title}</h1>
+  <p>En construcción…</p>
+</Layout>

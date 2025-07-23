@@ -2,25 +2,25 @@
 // Select UI to switch between locales.
 
 import { getLocalePaths, LOCALES } from "@/i18n";
+
+const FLAGS: Record<string, string> = { es: "🇪🇸", en: "🇺🇸", pt: "🇵🇹" };
 ---
 
-<label>
-  <span class="material-icons-sharp">translate</span>
+<div class="language-selector">
   <select data-languageSelect>
     {
       getLocalePaths(Astro.url).map(({ path, lang }) => (
         <option
-          label={LOCALES[lang].label}
           value={path}
           data-lang={lang}
           selected={lang === Astro.currentLocale}
           dir={LOCALES[lang].dir || null}
-        />
+        >{FLAGS[lang]}</option>
       ))
     }
   </select>
-  <span class="material-icons-sharp">expand_more</span>
-</label>
+  <span class="dropdown-icon">▼</span>
+</div>
 
 <script is:inline>
   const selects = document.querySelectorAll("[data-languageSelect]");
@@ -35,36 +35,65 @@ import { getLocalePaths, LOCALES } from "@/i18n";
 </script>
 
 <style>
-  label {
+  /* Ultra minimalist language selector - flags only */
+  .language-selector {
     position: relative;
-    display: inline-block;
-    width: 240px;
-    text-align-last: left;
-    .material-icons-sharp {
-      pointer-events: none;
-      position: absolute;
-      color: var(--color-theme);
-      &:first-child {
-        font-size: 24px;
-        inset: 8px auto 8px 8px;
-        opacity: 0.4;
-      }
-      &:last-child {
-        font-size: 28px;
-        inset: 6px 6px 6px auto;
-      }
-    }
+    display: flex;
+    align-items: center;
   }
-  select {
-    width: 100%;
-    height: 40px;
-    padding-inline: 38px;
+  
+  select[data-languageSelect] {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font-size: 1.2rem;
+    padding: 0.375rem 1.5rem 0.375rem 0.5rem;
     cursor: pointer;
-    appearance: none;
     border-radius: 6px;
-    font-family: "Noto Sans";
-    color: var(--color-main);
-    background-color: var(--color-base);
-    border: 2px solid var(--color-theme);
+    transition: all 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+  }
+  
+  select[data-languageSelect]:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  select[data-languageSelect]:focus {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dropdown-icon {
+    position: absolute;
+    right: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6rem;
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  .language-selector:hover .dropdown-icon {
+    opacity: 1;
+  }
+  
+  option {
+    background: #fff;
+    color: #333;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+  
+  option:checked {
+    background: #4a6cf7;
+    color: #fff;
+  }
+  
+  /* Hide default select arrow */
+  select[data-languageSelect]::-ms-expand {
+    display: none;
   }
 </style>

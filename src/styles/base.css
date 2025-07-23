@@ -7,20 +7,21 @@
 }
 
 :root {
-	@media (prefers-color-scheme: dark) {
-		--color-theme: #ef4d1a;
-		--color-accent: #943e0d;
-		--color-base: #342c28;
-		--color-main: #faf9f6;
-		--color-caution: #ffaa2b;
-	}
-	@media (prefers-color-scheme: light) {
-		--color-theme: #ef4d1a;
-		--color-accent: #ffcc21;
-		--color-base: #faf9f6;
-		--color-main: #342c28;
-		--color-caution: #a80a00;
-	}
+	/* Default light theme variables */
+	--color-theme: #ef4d1a;
+	--color-accent: #ffcc21;
+	--color-base: #ffffff;
+	--color-main: #342c28;
+	--color-caution: #a80a00;
+}
+
+/* Dark theme - only when .dark class is present */
+html.dark {
+	--color-theme: #ef4d1a;
+	--color-accent: #943e0d;
+	--color-base: #1a1a1a;
+	--color-main: #ffffff;
+	--color-caution: #ffaa2b;
 
 	--sp-l: 64px;
 	--sp-m: 32px;
@@ -31,24 +32,17 @@
 		--sp-s: 8px;
 	}
 
-	--english-font: "Noto Sans", "Robot", "Avenir Next", "Avenir",
-		"Century Gothic", "SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont,
-		sans-serif;
+	--english-font: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
 
 	color: var(--color-main);
 	background-color: var(--color-base);
 	accent-color: var(--color-theme);
 
-	background-image: radial-gradient(
-		color-mix(in srgb, var(--color-main) 10%, transparent) 1px,
-		var(--color-base) 1px
-	);
-	background-size: 16px 16px;
-
 	line-height: 1.6;
 	font-weight: 500;
 	font-size: 18px;
-	font-family: "Noto Sans", system-ui, "SF Pro Text", -apple-system,
+	font-family: "Inter", system-ui, "SF Pro Text", -apple-system,
 		BlinkMacSystemFont, sans-serif;
 	@media (width < 480px) {
 		font-size: 16px;
@@ -64,6 +58,22 @@ input,
 label {
 	line-height: 1.4;
 }
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff !important;
+	color: var(--color-main);
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure dark mode works */
+html.dark body {
+	background-color: #1a1a1a !important;
+	color: #ffffff;
+}
+
+/* Remove conflicting media queries - let JS handle theme logic */
 
 p {
 	margin-block-start: 0.8em;

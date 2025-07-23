@@ -2,12 +2,13 @@
 // Header & Navigation UI displayed on each page.
 
 import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
-import { Image } from "astro:assets";
+import logo from "@/assets/imagenes/logo.png";
+
 import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
 const t = useTranslations(Astro.currentLocale as Lang);
 
-import AstroImage from "@/assets/astro-logo.svg";
+
 
 const locale = Astro.currentLocale as Lang;
 
@@ -16,170 +17,391 @@ const isActive = (path: string) =>
 ---
 
 <header class="l-header">
-  <h1 dir="ltr">
-    <a href={getRelativeLocaleUrl(locale, "/")}>
-      <Image src={AstroImage} alt="Astro" />
-      i18n Starter
-    </a>
-  </h1>
+  <div class="header-container">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <a class="logo" href={getRelativeLocaleUrl(locale, "/")}>
+        <img src={logo.src} alt="Colegio Teresiano" height="40" />
+      </a>
+    </div>
 
-  <LocaleSelect />
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item dropdown">
+          <a href={getRelativeLocaleUrl(locale, "/nosotros")} class="nav-link">
+            {t({ es: "NOSOTROS", en: "ABOUT", pt: "SOBRE" })}
+            <span class="dropdown-arrow">▼</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href={getRelativeLocaleUrl(locale, "/experiencia")} class="nav-link">
+            {t({ es: "SECCIONES", en: "SECTIONS", pt: "SEÇÕES" })}
+            <span class="dropdown-arrow">▼</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href={getRelativeLocaleUrl(locale, "/campus")} class="nav-link">
+            {t({ es: "SERVICIOS", en: "SERVICES", pt: "SERVIÇOS" })}
+            <span class="dropdown-arrow">▼</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href={getRelativeLocaleUrl(locale, "/admisiones")} class="nav-link">
+            {t({ es: "MODELO", en: "MODEL", pt: "MODELO" })}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href={getRelativeLocaleUrl(locale, "/blog")} class="nav-link">
+            {t({ es: "CONTACTO", en: "CONTACT", pt: "CONTATO" })}
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-  <nav class="l-content">
-    <ul>
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/setup")}
-          class={isActive("/setup") ? "active" : null}
-        >
-          {t({ ja: "設定", en: "Setup", "zh-cn": "设置", ar: "إعداد" })}
+    <!-- Right Section -->
+    <div class="header-actions">
+      <LocaleSelect />
+      
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook" class="social-link">
+          <span class="material-icons-sharp">facebook</span>
         </a>
-      </li>
-
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/page")}
-          class={isActive("/page") ? "active" : null}
-        >
-          {
-            t({
-              ja: "ページの追加",
-              en: "Add Page",
-              "zh-cn": "添加页面",
-              ar: "إضافة صفحة",
-            })
-          }
+        <a href="#" aria-label="Instagram" class="social-link">
+          <span class="material-icons-sharp">instagram</span>
         </a>
-      </li>
+      </div>
+      
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="material-icons-sharp" id="themeIcon">dark_mode</span>
+      </button>
+      
+      <button class="menu-toggle" aria-label="Menu">
+        <span class="material-icons-sharp">menu</span>
+      </button>
+    </div>
+  </div>
 
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/feature")}
-          class={isActive("/feature") ? "active" : null}
-        >
-          {
-            t({
-              ja: "その他の機能",
-              en: "Features",
-              "zh-cn": "特性",
-              ar: "الميزات",
-            })
-          }
-        </a>
-      </li>
-
-      <li class="en-only">
-        <a
-          href={getRelativeLocaleUrl(locale, "/monolingual")}
-          class={isActive("/monolingual") ? "active" : null}
-        >
-          Monolingual
-        </a>
-      </li>
-
-      <li>
-        <a
-          href={getRelativeLocaleUrl(locale, "/blog")}
-          class={isActive("/blog") ? "active" : null}
-        >
-          {t({ ja: "ブログ", en: "Blog", "zh-cn": "博客", ar: "مدونة" })}
-        </a>
-      </li>
-
-      <li>
-        <a
-          href="https://github.com/psephopaiktes/astro-i18n-starter"
-          target="_blank"
-        >
-          GitHub
-          <span class="material-icons-sharp dir">open_in_new</span>
-        </a>
-      </li>
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href={getRelativeLocaleUrl(locale, "/nosotros")} class="mobile-nav-link">NOSOTROS</a></li>
+      <li><a href={getRelativeLocaleUrl(locale, "/experiencia")} class="mobile-nav-link">SECCIONES</a></li>
+      <li><a href={getRelativeLocaleUrl(locale, "/campus")} class="mobile-nav-link">SERVICIOS</a></li>
+      <li><a href={getRelativeLocaleUrl(locale, "/admisiones")} class="mobile-nav-link">MODELO</a></li>
+      <li><a href={getRelativeLocaleUrl(locale, "/blog")} class="mobile-nav-link">CONTACTO</a></li>
     </ul>
   </nav>
 </header>
 
 <style>
-  * {
-    flex-wrap: wrap;
+  /* Clean and Professional Navbar */
+  :root {
+    --nav-bg: #4a6cf7;
+    --nav-bg-dark: #3b5bdb;
+    --nav-text: #ffffff;
+    --nav-hover: rgba(255, 255, 255, 0.1);
+    --nav-height: 60px;
+    --nav-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .l-header {
+    background: var(--nav-bg);
+    color: var(--nav-text);
+    height: var(--nav-height);
+    box-shadow: var(--nav-shadow);
+    position: relative;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  html.dark .l-header {
+    background: var(--nav-bg-dark);
+  }
+
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 2rem;
+  }
+
+  /* Logo Section */
+  .logo-section {
+    flex-shrink: 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+
+  .logo:hover {
+    transform: scale(1.02);
+  }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  /* Main Navigation */
+  .main-nav {
+    flex: 1;
+    display: flex;
     justify-content: center;
   }
 
-  header {
-    display: grid;
-    place-items: center;
-    gap: var(--sp-s);
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    align-items: center;
   }
 
-  h1 {
-    margin-block-start: var(--sp-l);
-    margin-inline-start: -0.5em;
-    font-size: 40px;
-    font-family: var(--english-font);
-    font-weight: 900;
-    @media (width < 480px) {
-      font-size: 28px;
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-    }
-    img {
-      width: 6em;
-      position: relative;
-      inset: 0.1em;
-    }
+  .nav-item {
+    position: relative;
   }
 
-  nav {
+  .nav-link {
+    color: var(--nav-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: var(--sp-m);
+    gap: 0.25rem;
+    white-space: nowrap;
   }
-  ul {
-    display: flex;
-    gap: var(--sp-s);
-    margin-block-start: var(--sp-s);
 
-    .en-only {
-      position: relative;
-      &:not(:lang(en))::before {
-        content: "EN";
-        position: absolute;
-        inset: -0.4em -0.6em auto auto;
-        font-size: 0.8em;
-        font-weight: 900;
-        color: var(--color-main);
-        opacity: 0.6;
-      }
+  .nav-link:hover {
+    background: var(--nav-hover);
+  }
+
+  .dropdown-arrow {
+    font-size: 0.6rem;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-item.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Header Actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .social-link {
+    color: var(--nav-text);
+    padding: 0.375rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .social-link:hover {
+    background: var(--nav-hover);
+    transform: scale(1.1);
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    color: var(--nav-text);
+    cursor: pointer;
+    padding: 0.375rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .theme-toggle:hover {
+    background: var(--nav-hover);
+    transform: scale(1.1);
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--nav-text);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .menu-toggle:hover {
+    background: var(--nav-hover);
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav {
+    display: none;
+    background: var(--nav-bg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+  }
+
+  .mobile-nav.open {
+    display: block;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .mobile-nav-link {
+    color: var(--nav-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: block;
+  }
+
+  .mobile-nav-link:hover {
+    background: var(--nav-hover);
+  }
+
+  /* Locale Selector Styles */
+  .l-header label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .l-header select[data-languageSelect] {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    font-size: 0.875rem;
+    padding-right: 1.2rem;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0.375rem 1.2rem 0.375rem 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .l-header select[data-languageSelect]:hover {
+    background: var(--nav-hover);
+  }
+
+  .l-header select[data-languageSelect]::-ms-expand {
+    display: none;
+  }
+
+  .l-header label::after {
+    content: "▼";
+    position: absolute;
+    right: 0.3rem;
+    pointer-events: none;
+    font-size: 0.6rem;
+    color: currentColor;
+    opacity: 0.7;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 1rem;
     }
 
-    a {
-      font-size: 1.05rem;
-      display: block;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding-block: 0.2em;
-      padding-inline: 0.4em;
-      border-radius: 4px;
-      &:hover,
-      &:active {
-        background-color: color-mix(
-          in srgb,
-          var(--color-theme) 5%,
-          transparent
-        );
-      }
-      &.active {
-        pointer-events: none;
-        color: var(--color-theme);
-      }
-      .material-icons-sharp {
-        opacity: 0.6;
-        margin-inline-start: -0.2em;
-        font-size: 0.9em;
-      }
+    .main-nav {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .social-icons {
+      display: none;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-actions {
+      gap: 0.5rem;
+    }
+
+    .l-header select[data-languageSelect] {
+      font-size: 0.8rem;
+      padding: 0.25rem 1rem 0.25rem 0.375rem;
     }
   }
 </style>
+
+<script is:inline>
+  const btn = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const root = document.documentElement;
+
+  function setTheme(mode) {
+    if (mode === 'dark') {
+      root.classList.add('dark');
+      icon.textContent = 'light_mode';
+    } else {
+      root.classList.remove('dark');
+      icon.textContent = 'dark_mode';
+    }
+    localStorage.theme = mode;
+  }
+
+  // init
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const stored = localStorage.theme;
+  setTheme(stored || (prefersDark ? 'dark' : 'light'));
+
+  btn?.addEventListener('click', () => {
+    setTheme(root.classList.contains('dark') ? 'light' : 'dark');
+  });
+  
+  // Mobile menu toggle
+  const menuBtn = document.querySelector('.menu-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+  menuBtn?.addEventListener('click', () => {
+    mobileNav?.classList.toggle('open');
+  });
+</script>
